@@ -8,6 +8,7 @@ public class Solicitud {
 	
 	private boolean tipo; // false = bebidas | true = panaderia
 	private int cantidadArticulos;
+	private double tiempoDeArribo;
 
 	public Solicitud() {
 		super();
@@ -43,6 +44,10 @@ public class Solicitud {
 
 	}
 
+	public void setTiempoDeArribo(double tiempo){
+		tiempoDeArribo = tiempo;
+	}
+
 	public boolean getTipo(){
 		return tipo;
 	}
@@ -56,5 +61,9 @@ public class Solicitud {
 			return "panaderia";
 		}
 		return "bebidas saludables";
+	}
+
+	public double getTiempoDeArribo() {
+		return tiempoDeArribo;
 	}
 }

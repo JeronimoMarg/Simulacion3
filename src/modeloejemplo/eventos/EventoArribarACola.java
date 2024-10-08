@@ -31,6 +31,7 @@ public class EventoArribarACola extends Evento {
 		
 		//Procesar este arribo, para lo cual es necesario generar la solicitud que acaba de arribar.
 		Solicitud solicitudParaAgregar = new Solicitud();
+		solicitudParaAgregar.setTiempoDeArribo(getTiempoDeOcurrencia());
 		
 		if(modeloActual.estaServidorOcupado()) {
 			modeloActual.encolarSolicitud(solicitudParaAgregar);
@@ -39,8 +40,13 @@ public class EventoArribarACola extends Evento {
 			//Se atiende la solicitud y despues se guarda el numero del servidor que la ha atendido
 			int numeroServidor = modeloActual.atenderSolicitud(solicitudParaAgregar);
 			double duracionDelProcesamiento = calcularDuracionProcesamiento(solicitudParaAgregar, libreria);
+			
 			//beneficio de la nueva solicitud que se va a atender
 			int beneficio = calcularBeneficio(solicitudParaAgregar);
+
+			//Si se atiende entonces actualizamos el contador de tiempo promedio de clientes en kiosko
+			//Fijarse bien donde se actualiza el tiempo de ocurrencia dentro del evento
+			contadoresEjemplo.actualizarSumaTiempoClientes(getTiempoDeOcurrencia()-solicitudParaAgregar.getTiempoDeArribo());
 
 			EventoTerminaProcesamiento nuevoEventoAdicional = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, beneficio);	
 			eventos.agregar(nuevoEventoAdicional);

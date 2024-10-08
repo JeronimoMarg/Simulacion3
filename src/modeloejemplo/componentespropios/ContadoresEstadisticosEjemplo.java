@@ -9,6 +9,7 @@ public class ContadoresEstadisticosEjemplo extends ContadoresEstadisticos {
 	private int cantSolicitudesProcesadas;
 	private int beneficiosObtenidos;
 	private double longitudPromedioClientesEnCola;
+	private double sumaTiempoClientes;
 
 	public ContadoresEstadisticosEjemplo() {
 		super();
@@ -18,6 +19,7 @@ public class ContadoresEstadisticosEjemplo extends ContadoresEstadisticos {
 		cantSolicitudesProcesadas = 0;
 		beneficiosObtenidos = 0;
 		longitudPromedioClientesEnCola = 0;
+		sumaTiempoClientes = 0;
 	}
 
 	public double getLongitudPromedioClientesEnCola(){
@@ -47,6 +49,14 @@ public class ContadoresEstadisticosEjemplo extends ContadoresEstadisticos {
 
 	public int getBeneficiosObtenidos(){
 		return beneficiosObtenidos;
+	}
+
+    public void actualizarSumaTiempoClientes(double tiempoCliente) {
+		sumaTiempoClientes += tiempoCliente;
+    }
+
+	public double getTiempoPromedioClientes(){
+		return sumaTiempoClientes/cantSolicitudesProcesadas;
 	}
 
 	

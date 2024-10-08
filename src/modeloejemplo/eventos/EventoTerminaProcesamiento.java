@@ -33,9 +33,16 @@ public class EventoTerminaProcesamiento extends Evento {
 		
 		if(modeloActual.haySolicitudesEnEspera()) {
 			Solicitud solicitudAProcesar = modeloActual.obtenerSolicitud();
+
+			// se asigna el servidor a la solicitud que se ha procesado
 			int numeroServidor = modeloActual.atenderSolicitud(solicitudAProcesar);
 			double duracionDelProcesamiento = calcularDuracionProcesamiento(solicitudAProcesar, libreria);
+
+			//se calcula el beneficio para la solicitud
 			int nuevoBeneficio = calcularBeneficio(solicitudAProcesar);
+
+			//si se atiende se actualiza el contador estadistico de tiempo promedio de cliente en kiosko
+			contadoresEjemplo.actualizarSumaTiempoClientes(getTiempoDeOcurrencia()-solicitudAProcesar.getTiempoDeArribo());
 
 			EventoTerminaProcesamiento nuevoEvento = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, nuevoBeneficio);
 			eventos.agregar(nuevoEvento);	
