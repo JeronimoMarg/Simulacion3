@@ -55,6 +55,8 @@ public class EventoTerminaProcesamiento extends Evento {
 		if(modeloActual.haySolicitudesEnEspera()) {
 			Solicitud solicitudAProcesar = modeloActual.obtenerSolicitud();
 
+			modeloActual.actualizarServidorDisponible(servidorQueAtendia);
+
 			// se asigna el servidor a la solicitud que se ha procesado
 			int numeroServidor = modeloActual.atenderSolicitud(solicitudAProcesar);
 			double duracionDelProcesamiento = calcularDuracionProcesamiento(solicitudAProcesar, libreria);

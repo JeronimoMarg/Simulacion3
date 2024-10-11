@@ -26,7 +26,7 @@ public class GeneradorDeReportesEjemplo extends GeneradorDeReportes {
 		
 		for (int i=0; i<contadoresEjemplo.getCantidadServidores(); i++){
 			List<Double> lista = contadoresEjemplo.getTasaDeAtencion(8);
-			System.out.println("Tasa de atencion (clientes por hora) de la empleada N: " + i + lista.get(i));
+			System.out.println("Tasa de atencion (clientes por hora) de la empleada " + i + ": " + lista.get(i));
 		}
 		
 		System.out.println("Porcentaje de tiempo libre de cada empleada");

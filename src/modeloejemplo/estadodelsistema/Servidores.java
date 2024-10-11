@@ -26,7 +26,7 @@ public class Servidores {
 
     public Servidor getServidorLibre() {
         
-        Servidor servidorLibre = listaServidores.stream().filter(s -> !s.getEstaOcupado()).findFirst().orElse(null);
+        Servidor servidorLibre = listaServidores.stream().filter(s -> !s.getEstaOcupado()).findAny().orElse(null);
         return servidorLibre;
 
     }
