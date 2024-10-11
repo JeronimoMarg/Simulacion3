@@ -9,10 +9,11 @@ public class Servidor {
 	Boolean estaOcupado; /* false = libre / true = ocupado */
 	Solicitud solicitudEnProcesamiento; /* Solicitud que está siendo retenida en el servidor. */
 
-	public Servidor(boolean estado) {
+	public Servidor(boolean estado, int id) {
 		super();
 		estaOcupado = estado;
 		solicitudEnProcesamiento = null;
+		this.id = id;
 	}
 
 	public boolean getEstaOcupado() {

@@ -1,7 +1,6 @@
 package modeloejemplo.componentespropios;
 
 import des.LibreriaDeRutinas;
-import modeloejemplo.componentespropios.GeneradorNumeroAleatorio;
 
 /* Subprogramas usados para generar observaciones aleatorias desde las distribuciones de 
  * probabilidad asociadas al modelo. */

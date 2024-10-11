@@ -44,11 +44,7 @@ public class EventoArribarACola extends Evento {
 			//beneficio de la nueva solicitud que se va a atender
 			int beneficio = calcularBeneficio(solicitudParaAgregar);
 
-			//Si se atiende entonces actualizamos el contador de tiempo promedio de clientes en kiosko
-			//Fijarse bien donde se actualiza el tiempo de ocurrencia dentro del evento
-			contadoresEjemplo.actualizarSumaTiempoClientes(getTiempoDeOcurrencia()-solicitudParaAgregar.getTiempoDeArribo());
-
-			EventoTerminaProcesamiento nuevoEventoAdicional = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, beneficio);	
+			EventoTerminaProcesamiento nuevoEventoAdicional = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, beneficio, solicitudParaAgregar.getTiempoDeArribo(),duracionDelProcesamiento);
 			eventos.agregar(nuevoEventoAdicional);
 		}
 

@@ -1,7 +1,6 @@
 package modeloejemplo.estadodelsistema;
 
 import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 public class Servidores {
 
@@ -11,7 +10,7 @@ public class Servidores {
         super();
         listaServidores = new ArrayList<Servidor>();
         for(int i=0; i<cantidad; i++){
-            listaServidores.add(new Servidor(false));
+            listaServidores.add(new Servidor(false,i));
         }
     }
 

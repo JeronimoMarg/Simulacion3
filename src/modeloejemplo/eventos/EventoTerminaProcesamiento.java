@@ -13,11 +13,28 @@ public class EventoTerminaProcesamiento extends Evento {
 
 	private int servidorQueAtendia;
 	private int beneficio;
+	private double tiempoDeArribo;
+	private double tiempoDeAtencion;
 
 	public EventoTerminaProcesamiento(double tiempoDeOcurrencia, int servidor, int beneficio) {
 		super(tiempoDeOcurrencia);
 		this.servidorQueAtendia = servidor;
 		this.beneficio = beneficio;
+	}
+
+	public EventoTerminaProcesamiento(double tiempoDeOcurrencia, int servidor, int beneficio, double tiempoDeArribo) {
+		super(tiempoDeOcurrencia);
+		this.servidorQueAtendia = servidor;
+		this.beneficio = beneficio;
+		this.tiempoDeArribo = tiempoDeArribo;
+	}
+
+	public EventoTerminaProcesamiento(double tiempoDeOcurrencia, int servidor, int beneficio, double tiempoDeArribo, double tiempoDeAtencion) {
+		super(tiempoDeOcurrencia);
+		this.servidorQueAtendia = servidor;
+		this.beneficio = beneficio;
+		this.tiempoDeArribo = tiempoDeArribo;
+		this.tiempoDeAtencion = tiempoDeAtencion;
 	}
 
 	@Override
@@ -28,6 +45,10 @@ public class EventoTerminaProcesamiento extends Evento {
 		ContadoresEstadisticosEjemplo contadoresEjemplo = (ContadoresEstadisticosEjemplo) contadores;
 		//El beneficio solo se actualiza cuando termina el procesamiento (se cobra, digamos)
 		contadoresEjemplo.actualizarBeneficios(beneficio);
+		contadoresEjemplo.actualizarCantProcesadas();
+		contadoresEjemplo.actualizarSumaTiempoClientes(getTiempoDeOcurrencia()-tiempoDeArribo);
+		contadoresEjemplo.actualizarCantidadAtendidoPorServidor(servidorQueAtendia);
+		contadoresEjemplo.actualizarCantidadTiempoProcesadoPorServidor(servidorQueAtendia, tiempoDeAtencion);
 		
 		ModeloDelEjemplo modeloActual = (ModeloDelEjemplo) modelo;
 		
@@ -41,10 +62,7 @@ public class EventoTerminaProcesamiento extends Evento {
 			//se calcula el beneficio para la solicitud
 			int nuevoBeneficio = calcularBeneficio(solicitudAProcesar);
 
-			//si se atiende se actualiza el contador estadistico de tiempo promedio de cliente en kiosko
-			contadoresEjemplo.actualizarSumaTiempoClientes(getTiempoDeOcurrencia()-solicitudAProcesar.getTiempoDeArribo());
-
-			EventoTerminaProcesamiento nuevoEvento = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, nuevoBeneficio);
+			EventoTerminaProcesamiento nuevoEvento = new EventoTerminaProcesamiento(duracionDelProcesamiento, numeroServidor, nuevoBeneficio, solicitudAProcesar.getTiempoDeArribo(), duracionDelProcesamiento);
 			eventos.agregar(nuevoEvento);	
 		}
 		else {
