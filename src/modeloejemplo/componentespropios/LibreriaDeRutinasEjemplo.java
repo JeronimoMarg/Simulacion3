@@ -19,7 +19,6 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 		//Exponencial con media de 2,4 minutos.
 		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
 		double valor = -2.4 * Math.log(1 - random);
-		System.out.println("Numero generado para TIEMPO PROCESAMIENTO BEBIDA: " + random + " es igual a: " + valor);
 		switch (cantidadArticulos){
 			case 2:
 				valor *= 1.10;
@@ -28,6 +27,7 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 				valor *= 1.13;
 				break;
 		}
+		System.out.println("Numero generado para TIEMPO PROCESAMIENTO BEBIDA: " + random + " es igual a: " + valor);
 		return valor;
 	}
 
@@ -35,7 +35,6 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 		//Exponencial con media de 3,5 minutos.
 		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
 		double valor = -3.5 * Math.log(1 - random);
-		System.out.println("Numero generado para TIEMPO PROCESAMIENTO PAN: " + random + " es igual a: " + valor);
 		switch(cantidadArticulos){
 			case 2: 
 				valor *= 1.12;
@@ -47,7 +46,7 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 				valor *= 1.2;
 				break;
 		}
-
+		System.out.println("Numero generado para TIEMPO PROCESAMIENTO PAN: " + random + " es igual a: " + valor);
 		return valor;
 	}
 
