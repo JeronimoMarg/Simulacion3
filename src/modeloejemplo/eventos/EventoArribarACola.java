@@ -8,6 +8,7 @@ import modeloejemplo.componentespropios.ContadoresEstadisticosEjemplo;
 import modeloejemplo.componentespropios.LibreriaDeRutinasEjemplo;
 import modeloejemplo.estadodelsistema.ModeloDelEjemplo;
 import modeloejemplo.estadodelsistema.Solicitud;
+import modeloejemplo.estadodelsistema.TipoSolicitud;;
 
 public class EventoArribarACola extends Evento {
 
@@ -54,10 +55,10 @@ public class EventoArribarACola extends Evento {
 	private int calcularBeneficio(Solicitud solicitud){
 
 		int beneficio = 0;
-		if(solicitud.getTipo() == true){
+		if(solicitud.getTipo().equals(TipoSolicitud.PANADERIA)){
 			beneficio += 850 * solicitud.getCantidad();
 			beneficio -= 400 * solicitud.getCantidad();
-		}else{
+		}else if (solicitud.getTipo().equals(TipoSolicitud.BEBIDA)){
 			beneficio += 1200 * solicitud.getCantidad();
 			beneficio -= 600 * solicitud.getCantidad();
 		}
@@ -67,10 +68,10 @@ public class EventoArribarACola extends Evento {
 
 	private double calcularDuracionProcesamiento(Solicitud solicitudAProcesar, LibreriaDeRutinasEjemplo libreria) {
 
-		double duracionDelProcesamiento;
-		if(solicitudAProcesar.getTipo() == true){
+		double duracionDelProcesamiento=0.0;
+		if(solicitudAProcesar.getTipo().equals(TipoSolicitud.PANADERIA)){
 			duracionDelProcesamiento = libreria.tiempoDeProcesamientoPanaderia(solicitudAProcesar.getCantidad());
-		}else{
+		}else if (solicitudAProcesar.getTipo().equals(TipoSolicitud.BEBIDA)){
 			duracionDelProcesamiento = libreria.tiempoDeProcesamientoBebidasSaludables(solicitudAProcesar.getCantidad());
 		}
 		return duracionDelProcesamiento;

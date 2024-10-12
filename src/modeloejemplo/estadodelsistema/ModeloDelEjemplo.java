@@ -10,7 +10,7 @@ public class ModeloDelEjemplo extends EstadoDelSistema {
 	//private Servidor servidor;
 	private Servidores servidores;
 	//determinamos la cantidad de servidores que se tienen
-	private static final int cantidadServidores = 2;
+	private static final int cantidadServidores = 1;
 	
 	public void inicializar() {
 		cola = new ColaDeSolicitudes();

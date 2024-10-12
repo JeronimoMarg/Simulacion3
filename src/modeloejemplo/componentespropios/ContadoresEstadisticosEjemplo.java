@@ -17,7 +17,7 @@ public class ContadoresEstadisticosEjemplo extends ContadoresEstadisticos {
 	private ArrayList<Integer> cantidadAtendidoPorServidor;
 	private ArrayList<Double> cantidadTiempoProcesadoPorServidor;
 
-	private static final int cantidadDeServidores = 2;
+	private static final int cantidadDeServidores = 1;
 
 	public ContadoresEstadisticosEjemplo() {
 		super();

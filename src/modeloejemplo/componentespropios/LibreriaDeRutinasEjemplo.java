@@ -9,13 +9,17 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 
 	public double tiempoEntreArribosSolicitudes() {
 		//Siguen la distribución exponencial ya utilizada (media de 4 minutos).
-		double valor = -4 * Math.log(1 - GeneradorNumeroAleatorio.generarNumeroAleatorio());
+		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
+		double valor = -4 * Math.log(1 - random);
+		System.out.println("~~~~~~~Numero generado para TIEMPO ENTRE ARRIBO: " + random);
 		return valor;
 	}
 
 	public double tiempoDeProcesamientoBebidasSaludables(int cantidadArticulos) {
 		//Exponencial con media de 2,4 minutos.
-		double valor = -2.4 * Math.log(1 - GeneradorNumeroAleatorio.generarNumeroAleatorio());
+		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
+		double valor = -2.4 * Math.log(1 - random);
+		System.out.println("~~~~~~~Numero generado para TIEMPO PROCESAMIENTO BEBIDA: " + random);
 		switch (cantidadArticulos){
 			case 2:
 				valor *= 1.10;
@@ -29,8 +33,9 @@ public class LibreriaDeRutinasEjemplo extends LibreriaDeRutinas {
 
 	public double tiempoDeProcesamientoPanaderia(int cantidadArticulos){
 		//Exponencial con media de 3,5 minutos.
-		double valor = -3.5 * Math.log(1 - GeneradorNumeroAleatorio.generarNumeroAleatorio());
-
+		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
+		double valor = -3.5 * Math.log(1 - random);
+		System.out.println("~~~~~~~Numero generado para TIEMPO PROCESAMIENTO PAN: " + random);
 		switch(cantidadArticulos){
 			case 2: 
 				valor *= 1.12;

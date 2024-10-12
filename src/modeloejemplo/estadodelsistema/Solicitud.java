@@ -6,7 +6,7 @@ import modeloejemplo.componentespropios.GeneradorNumeroAleatorio;
 
 public class Solicitud {
 	
-	private boolean tipo; // false = bebidas | true = panaderia
+	private TipoSolicitud tipo;
 	private int cantidadArticulos;
 	private double tiempoDeArribo;
 
@@ -15,15 +15,18 @@ public class Solicitud {
 
 		//Para asignar el tipo de producto
 		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
-		if (random <= 0.7){
-			tipo = false;
+		System.out.println("~~~~~~~Numero generado para asignar TIPO: " + random);
+		
+		if (random > 0.7){
+			this.tipo = TipoSolicitud.PANADERIA;
 		}else{
-			tipo = true;
+			this.tipo = TipoSolicitud.BEBIDA;
 		}
 
 		//Para asignar la cantidad de productos
 		double random2 = GeneradorNumeroAleatorio.generarNumeroAleatorio();
-		if(tipo = true){
+		System.out.println("~~~~~~~Numero generado para asignar CANTIDAD: " + random2);
+		if(this.tipo.equals(TipoSolicitud.PANADERIA)){
 			if (random2 <= 0.27){
 				cantidadArticulos = 1;}
 			else if (random2 <= 0.52 && random2 > 0.27){
@@ -48,7 +51,7 @@ public class Solicitud {
 		tiempoDeArribo = tiempo;
 	}
 
-	public boolean getTipo(){
+	public TipoSolicitud getTipo(){
 		return tipo;
 	}
 
@@ -57,10 +60,7 @@ public class Solicitud {
 	}
 
 	public String getTipoString(){
-		if(tipo){
-			return "panaderia";
-		}
-		return "bebidas saludables";
+		return tipo.toString();
 	}
 
 	public double getTiempoDeArribo() {
