@@ -15,17 +15,15 @@ public class Solicitud {
 
 		//Para asignar el tipo de producto
 		double random = GeneradorNumeroAleatorio.generarNumeroAleatorio();
-		System.out.println("~~~~~~~Numero generado para asignar TIPO: " + random);
-		
 		if (random > 0.7){
 			this.tipo = TipoSolicitud.PANADERIA;
 		}else{
 			this.tipo = TipoSolicitud.BEBIDA;
 		}
+		System.out.println("Numero generado para asignar TIPO: " + random + "se asigna el tipo: " + this.tipo.toString());
 
 		//Para asignar la cantidad de productos
 		double random2 = GeneradorNumeroAleatorio.generarNumeroAleatorio();
-		System.out.println("~~~~~~~Numero generado para asignar CANTIDAD: " + random2);
 		if(this.tipo.equals(TipoSolicitud.PANADERIA)){
 			if (random2 <= 0.27){
 				cantidadArticulos = 1;}
@@ -44,6 +42,7 @@ public class Solicitud {
 			else if(random2 > 0.9){
 				cantidadArticulos = 3;}
 		}
+		System.out.println("Numero generado para asignar CANTIDAD: " + random2 + "se asigna la cantidad: " + cantidadArticulos);
 
 	}
 
