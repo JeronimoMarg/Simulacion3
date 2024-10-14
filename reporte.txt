@@ -1,0 +1,11 @@
+------------------------------------------------------
+***GENERADOR DE REPORTES *** 
+------------------------------------------------------
+Beneficios totales en $: 105450
+Longitud promedio de clientes en cola: 7.454218575730946E-9
+Tiempo promedio de los clientes en el kiosko: 3.3473074459542516
+Tasa de atencion (clientes por hora) de la empleada 0: 9.0
+Tasa de atencion (clientes por hora) de la empleada 1: 4.375
+Porcentaje de tiempo libre de cada empleada
+Empleada 0: 56.796079241828124
+Empleada 1: 74.90859646743601
